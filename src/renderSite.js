@@ -33,6 +33,8 @@ function renderFullPage (html, preloadedState) {
 body {
     font-family: 'Open Sans', sans-serif;
     background: #f0f6ff;
+    padding: 0 auto;
+    max-width: 780px;
 }
 
 h1, h2, h3, h4, h5 {
