@@ -44,26 +44,19 @@ h1, h2, h3, h4, h5 {
 .title {
   padding: 1vh 2.5vh;
   margin: 0;
+  text-align: center;
 }
 
 .subtitle {
   padding: 1vh 2.5vh 0;
   margin: 0;
   font-weight: bold;
+  text-align: center;
 }
 
 .info {
   padding: 1vh 2.5vh;
   margin: 0;
-}
-
-.toc {
-  padding: 0.5vh 2.5vh 2vh;
-  margin: 0;
-}
-
-.toc li {
-  list-style-type: none;
 }
 
 a.link-button {
@@ -73,10 +66,20 @@ a.link-button {
   border: 1px solid #0089a9;
   border-radius: 5px;
   padding: 0.5em;
-  margin: 0.5em 0;
+  margin: 0.5em auto;
   text-align: center;
   text-decoration: none;
   font-weight: bold;
+  max-width: 360px;
+  text-align: center;
+}
+
+.intro {
+  margin-bottom: 5vh;
+}
+
+.start-here {
+  margin-top: 5vh;
 }
 
 .call-to-action {

@@ -6,19 +6,12 @@ import CallToAction from './CallToAction';
 
 const App = ({callsToAction}) => (
   <div>
-    
-    <h1 className='title'>We're his problem now.</h1>
-
-    <div className='subtitle'>Call on your elected representatives to push back against Trump.</div>
+    <h1 id='title' className='title'>☎️ Anti-Trump Phone Sheet ☎️</h1>
+    <h2 className='subtitle'>Push back against Donald Trump by calling your elected representatives.</h2>
 
     <div id='intro' className='intro info'>
-      <p>All election cycle, Donald Trump has been our problem. Now, we're <b>HIS PROBLEM</b>, and since Congress serves us, <b>SO ARE THEY</b>. Let's use the best tool at our disposal (our elected representation) to show Donald once and for all that, in our America, <b>ACCOUNTABILITY TRUMPS HATE</b>.</p>
+      <a className='link-button' href='#start-here'>What is this about?</a>
     </div>
-
-    <ul className='toc'>
-      <li><a className='link-button' href='#start-here'>Start here</a></li>
-      <li><a className='link-button' href='#calls-to-action'>Calls to action</a></li>
-    </ul>
 
     <div id='calls-to-action' className='calls-to-action'>
       {callsToAction.map((callToAction) => (
@@ -27,7 +20,12 @@ const App = ({callsToAction}) => (
     </div>
 
     <div id='start-here' className='start-here info'>
-      <h2>How to start</h2>
+      <h2>What is this about?</h2>
+
+      <p>All election cycle, Donald Trump has been our problem. Now, we're <b>HIS PROBLEM</b>, and since Congress serves us, <b>SO ARE THEY</b>. Let's use the best tool at our disposal (our elected representation) to show Donald once and for all that, in our America, <b>ACCOUNTABILITY TRUMPS HATE</b>.</p>
+
+      <p><a href="http://www.attn.com/stories/12768/former-congressional-staffer-explains-how-to-make-congressman-listen">Read this series of tweets for more on why phone calls are an effective tool for political action.</a></p>
+
 
       <p>This page contains a list of weekly scripts to use when calling your elected representatives. You can find more resources and information <a href='https://docs.google.com/spreadsheets/d/174f0WBSVNSdcQ5_S6rWPGB3pNCsruyyM_ZRQ6QUhGmo/htmlview?usp=sharing&sle=true#'>on this google spreadheet</a>. </p>
 
@@ -35,8 +33,7 @@ const App = ({callsToAction}) => (
 
      <p>Toward the end of the week, when you have made and followed up on the WEEKLY-CALL-TO-ACTION, make calls about specific progressive issues that are important to you. Call about even-numbered issues on Thursdays and odd-numbered issues on Fridays. Try to avoid calling about an issue that is directly-related to the WEEKLY-CALL-TO-ACTION, since officials will likely receive lots of calls about this particular topic. If that issue is super important to you, just make extra follow-up calls using the WEEKLY-CALL-TO-ACTION script.</p>
 
-      <a className='link-button' href='#calls-to-action'>Make your first call</a>
-
+      <a className='link-button' href='#title'>Go back to the phone sheet.</a>
     </div>
   </div>
 
