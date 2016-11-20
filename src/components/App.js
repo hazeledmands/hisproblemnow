@@ -7,7 +7,7 @@ import CallToAction from './CallToAction';
 const App = ({callsToAction}) => (
   <div>
     <h1 id='title' className='title'>☎️ Anti-Trump Phone Sheet ☎️</h1>
-    <h2 className='subtitle'>Push back against Donald Trump by calling your elected representatives.</h2>
+    <h2 className='subtitle'>Push back against Donald Trump by calling your elected representatives using these handy scripts.</h2>
 
     <div id='intro' className='intro info'>
       <a className='link-button' href='#start-here'>What is this about?</a>
@@ -27,7 +27,7 @@ const App = ({callsToAction}) => (
       <p><a href="http://www.attn.com/stories/12768/former-congressional-staffer-explains-how-to-make-congressman-listen">Read this series of tweets for more on why phone calls are an effective tool for political action.</a></p>
 
 
-      <p>This page contains a list of weekly scripts to use when calling your elected representatives. You can find more resources and information <a href='https://docs.google.com/spreadsheets/d/174f0WBSVNSdcQ5_S6rWPGB3pNCsruyyM_ZRQ6QUhGmo/htmlview?usp=sharing&sle=true#'>on this google spreadheet</a>. </p>
+      <p>This page contains a list of weekly scripts to use when calling your elected representatives. You can find more resources and information <a href='https://docs.google.com/spreadsheets/d/174f0WBSVNSdcQ5_S6rWPGB3pNCsruyyM_ZRQ6QUhGmo/htmlview?usp=sharing&sle=true#'>on this google spreadsheet</a>. </p>
 
       <p>Begin with the WEEKLY-CALL-TO ACTION. This is the #1 priority for calls. I'll update every Sunday eve/early Monday, or sometimes mid-week if something urgent comes up. Call Party Leadership AND your own representatives.</p>
 
