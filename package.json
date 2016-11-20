@@ -18,15 +18,13 @@
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.6",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-latest": "^6.16.0"
   },
   "repository": {
     "type": "git",
     "url": ""
-  },
-  "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babel-preset-latest": "^6.16.0"
   }
 }
