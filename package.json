@@ -25,6 +25,9 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/demands/hisproblemnow"
+  },
+  "engines": {
+    "node": "6.9.1"
   }
 }
