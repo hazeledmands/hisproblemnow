@@ -4,24 +4,29 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
 import App from './components/App';
-import prismicStore from './prismicStore';
 import reducer from './reducer';
 
-export default function handleRender (req, res) {
-  const preloadedState = prismicStore;
-  const store = createStore(reducer, preloadedState);
+export default function (preloadedState, {includePrismicToolbar} = {}) {
+  return function renderSite (req, res) {
+    const store = createStore(reducer, preloadedState);
 
-  const html = renderToString(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  )
+    const html = renderToString(
+      <Provider store={store}>
+	<App />
+      </Provider>
+    )
 
-  const finalState = store.getState();
-  res.send(renderFullPage(html, finalState));
+    const finalState = store.getState();
+    res.send(renderFullPage(html, finalState, includePrismicToolbar));
+  };
 };
 
-function renderFullPage (html, preloadedState) {
+function renderFullPage (html, preloadedState, includePrismicToolbar) {
+  let prismicToolbarScriptTag = '';
+  if (includePrismicToolbar) {
+    prismicToolbarScriptTag = '<script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>'
+  }
+  
   return `
     <!doctype html>
       <head>
@@ -118,6 +123,7 @@ a.link-button {
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
         </script>
+	${prismicToolbarScriptTag}
       </body>
     </html>
   `

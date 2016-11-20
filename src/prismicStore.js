@@ -8,6 +8,20 @@ const data = {
 
 export default data;
 
+export function getPreviewData (token) {
+  return Prismic.api("https://hisproblemnow.prismic.io/api")
+  .then(function (api) {
+    return api.query(Prismic.Predicates.at('document.type', 'call-to-action'), {
+      pageSize: 100,
+      orderings: '[my.call-to-action.date desc]',
+      ref: token,
+    });
+  })
+  .then(function (response) {
+    return {callsToAction: response.results};
+  });
+}
+
 export function reloadPrismicData () {
   logger.info('Loading cached posts.');
   return Prismic.api("https://hisproblemnow.prismic.io/api")
