@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react';
 
+import StructuredText from './StructuredText';
+
 const CallToAction = (props) => (
   <div className='call-to-action'>
     <h1>{props['call-to-action.title'].value[0].text}</h1>
@@ -7,19 +9,11 @@ const CallToAction = (props) => (
     <time>{props['call-to-action.date'].value}</time>
 
     <div className='script'>
-      {props['call-to-action.script'].value.map((block) => {
-        if (block.type === 'paragraph') {
-          return (<p>{block.text}</p>);
-        }
-      })}
+      <StructuredText {...props['call-to-action.script']} />
     </div>
 
     <div className='notes'>
-      {props['call-to-action.notes'].value.map((block) => {
-        if (block.type === 'paragraph') {
-          return (<p>{block.text}</p>);
-        }
-      })}
+      <StructuredText {...props['call-to-action.notes']} />
     </div>
   </div>
 )
