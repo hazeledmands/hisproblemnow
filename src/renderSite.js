@@ -106,6 +106,10 @@ a.link-button {
     overflow: hidden;
 }
 
+.call-to-action .phone-number-block {
+    padding: 1vh 2vh;
+}
+
 .call-to-action .notes {
     border-top: 1px solid grey;
     margin: 0;

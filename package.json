@@ -9,19 +9,20 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-plugin-transform-react-jsx": "^6.8.0",
+    "babel-preset-latest": "^6.16.0",
     "bunyan": "^1.8.5",
     "bunyan-middleware": "^0.5.1",
     "express": "~4.13.4",
     "lodash": "^4.17.2",
     "moment": "^2.16.0",
+    "phone-formatter": "0.0.2",
     "prismic.io": "^3.3.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.6",
-    "redux": "^3.6.0",
-    "babel-cli": "^6.18.0",
-    "babel-plugin-transform-react-jsx": "^6.8.0",
-    "babel-preset-latest": "^6.16.0"
+    "redux": "^3.6.0"
   },
   "repository": {
     "type": "git",
