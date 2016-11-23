@@ -6,7 +6,7 @@ function StructuredText ({value}) {
   let listItems = [];
 
   /* group contiguous list items */
-  value.forEach(function (block) {
+  (value || []).forEach(function (block) {
     if (block.type === 'list-item') {
       listItems.push(block);
     }
