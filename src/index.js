@@ -3,7 +3,7 @@ import bunyanMiddleware from 'bunyan-middleware';
 import express from 'express';
 import moment from 'moment';
 
-import cachedData, {reloadPrismicData, getPreviewData} from './prismicStore';
+import cachedData, {reloadPrismicData, getData} from './prismicStore';
 import logger from './logger';
 import renderSite from './renderSite';
 
@@ -33,7 +33,7 @@ site.get('/preview', function (req, res, next) {
     httpOnly: false
   });
   
-  return getPreviewData(previewToken)
+  return getData(previewToken)
   .then(function (previewData) {
     return renderSite(previewData, {includePrismicToolbar: true});
   })

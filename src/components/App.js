@@ -3,14 +3,15 @@ import _ from 'lodash';
 import {connect} from 'react-redux';
 
 import CallToAction from './CallToAction';
+import StructuredText from './StructuredText';
 
-const App = ({callsToAction}) => (
+const App = ({callsToAction, startHere}) => (
   <div>
-    <h1 id='title' className='title'>☎️ Anti-Trump Phone Sheet ☎️</h1>
-    <h2 className='subtitle'>Push back against Donald Trump by calling your elected representatives using these handy scripts.</h2>
+    <h1 id='title' className='title'>{startHere.data['start-here.page-title'].value}</h1>
+    <h2 className='subtitle'>{startHere.data['start-here.subtitle'].value}</h2>
 
     <div id='intro' className='intro info'>
-      <a className='link-button' href='#start-here'>What is this about?</a>
+      <a className='link-button' href='#start-here'>{startHere.data['start-here.button-text'].value}</a>
     </div>
 
     <div id='calls-to-action' className='calls-to-action'>
@@ -20,18 +21,9 @@ const App = ({callsToAction}) => (
     </div>
 
     <div id='start-here' className='start-here info'>
-      <h2>What is this about?</h2>
+      <h2>{startHere.data['start-here.title'].value}</h2>
 
-      <p>All election cycle, Donald Trump has been our problem. Now, we're <b>HIS PROBLEM</b>, and since Congress serves us, <b>SO ARE THEY</b>. Let's use the best tool at our disposal (our elected representation) to show Donald once and for all that, in our America, <b>ACCOUNTABILITY TRUMPS HATE</b>.</p>
-
-      <p><a href="http://www.attn.com/stories/12768/former-congressional-staffer-explains-how-to-make-congressman-listen">Read this series of tweets for more on why phone calls are an effective tool for political action.</a></p>
-
-
-      <p>This page contains a list of weekly scripts to use when calling your elected representatives. You can find more resources and information <a href='https://docs.google.com/spreadsheets/d/174f0WBSVNSdcQ5_S6rWPGB3pNCsruyyM_ZRQ6QUhGmo/htmlview?usp=sharing&sle=true#'>on this google spreadsheet</a>. </p>
-
-      <p>Begin with the WEEKLY-CALL-TO ACTION. This is the #1 priority for calls. I'll update every Sunday eve/early Monday, or sometimes mid-week if something urgent comes up. Call Party Leadership AND your own representatives.</p>
-
-     <p>Toward the end of the week, when you have made and followed up on the WEEKLY-CALL-TO-ACTION, make calls about specific progressive issues that are important to you. Call about even-numbered issues on Thursdays and odd-numbered issues on Fridays. Try to avoid calling about an issue that is directly-related to the WEEKLY-CALL-TO-ACTION, since officials will likely receive lots of calls about this particular topic. If that issue is super important to you, just make extra follow-up calls using the WEEKLY-CALL-TO-ACTION script.</p>
+      <StructuredText value={startHere.data['start-here.content'].value} />
 
       <a className='link-button' href='#title'>Go back to the phone sheet.</a>
     </div>
@@ -41,6 +33,7 @@ const App = ({callsToAction}) => (
 
 App.propTypes = {
   callsToAction: PropTypes.array.isRequired,
+  startHere: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = (state) => {
