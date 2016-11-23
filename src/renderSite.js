@@ -7,18 +7,16 @@ import App from './components/App';
 import reducer from './reducer';
 
 export default function (preloadedState, {includePrismicToolbar} = {}) {
-  return function renderSite (req, res) {
-    const store = createStore(reducer, preloadedState);
+  const store = createStore(reducer, preloadedState);
 
-    const html = renderToString(
-      <Provider store={store}>
-	<App />
-      </Provider>
-    )
+  const html = renderToString(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
 
-    const finalState = store.getState();
-    res.send(renderFullPage(html, finalState, includePrismicToolbar));
-  };
+  const finalState = store.getState();
+  return renderFullPage(html, finalState, includePrismicToolbar);
 };
 
 function renderFullPage (html, preloadedState, includePrismicToolbar) {
