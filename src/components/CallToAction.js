@@ -24,10 +24,10 @@ const CallToAction = (props) => (
 CallToAction.propTypes = {
   uid: PropTypes.string.isRequired,
   'call-to-action.title': PropTypes.object.isRequired,
-  'call-to-action.notes': PropTypes.object.isRequired,
-  'call-to-action.script': PropTypes.object.isRequired,
-  'call-to-action.date': PropTypes.object.isRequired,
-  'call-to-action.phone-numbers': PropTypes.object.isRequired,
+  'call-to-action.notes': PropTypes.object,
+  'call-to-action.script': PropTypes.object,
+  'call-to-action.date': PropTypes.object,
+  'call-to-action.phone-numbers': PropTypes.object,
 }
 
 export default CallToAction;
