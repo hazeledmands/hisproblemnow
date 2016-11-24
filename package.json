@@ -13,7 +13,8 @@
     "dev:watch:server": "nodemon --exec babel-node src/server --ignore build --ignore src/client",
     "postinstall": "npm run build",
     "lint": "eslint src",
-    "test": "npm run lint"
+    "check-types": "flow",
+    "test": "npm run lint && npm run check-types"
   },
   "dependencies": {
     "babel-cli": "^6.18.0",
