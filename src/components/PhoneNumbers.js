@@ -11,15 +11,13 @@ const PhoneNumbers = ({value}) => (
 )
 
 function PhoneNumber ({value}) {
-  console.log(value);
-
   let title = _.get(value, 'title.value');
   let firstName = _.get(value, 'first-name-or-organization.value');
   let lastName = _.get(value, 'last-name.value');
 
   let name = _([title, firstName, lastName]).flatten().join(' ');
   let phone = phoneFormatter.format(new String(_.get(value, 'phone-number.value', '')), '(NNN) NNN-NNNN');
-  
+
   return (
     <div className='phone-number-block'>
       {name && <div className='name'>{name}</div>}

@@ -32,7 +32,6 @@ function StructuredText ({value}) {
   return (
     <div className='structured-text'>
       {blocks.map(function (block, i) {
-        console.log(block);
         if (block.type === 'unordered-list') {
           return <ul key={i}>
             {block.listItems.map((listItem, i) =>
@@ -81,7 +80,7 @@ function Block({type, spans, text}) {
       tag = 'p';
       break;
   }
-  return React.createElement(tag, {}, 
+  return React.createElement(tag, {},
     segments.map(function (segment, i) {
       switch (segment.type) {
         case 'span':
