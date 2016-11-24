@@ -10,7 +10,7 @@
     "start": "node build/server",
     "dev": "webpack --progress && babel-node src/server",
     "dev:watch:client": "webpack --watch --progress",
-    "dev:watch:server": "nodemon --exec babel-node src/server",
+    "dev:watch:server": "nodemon --exec babel-node src/server --ignore build --ignore src/client",
     "postinstall": "npm run build"
   },
   "dependencies": {
