@@ -2,6 +2,7 @@ import Prismic from 'prismic.io';
 import bunyanMiddleware from 'bunyan-middleware';
 import express from 'express';
 import moment from 'moment';
+import path from 'path';
 
 import cachedData, {reloadPrismicData, getData} from './prismicStore';
 import logger from './logger';
@@ -18,6 +19,8 @@ site.use(function (err, req, res, next) { /* variadic functions in javascript ar
   next(err);
 });
 
+site.use('/static', express.static(path.join(__dirname, '..', '..', 'build', 'public')));
+
 site.get('/', function (req, res, next) {
   Promise.resolve(renderSite(cachedData))
   .then(function (content) {
@@ -32,7 +35,7 @@ site.get('/preview', function (req, res, next) {
     path: '/',
     httpOnly: false
   });
-  
+
   return getData(previewToken)
   .then(function (previewData) {
     return renderSite(previewData, {includePrismicToolbar: true});
@@ -51,4 +54,3 @@ reloadPrismicData()
     logger.info({port: PORT}, 'server listening');
   });
 });
-
