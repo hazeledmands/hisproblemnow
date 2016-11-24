@@ -8,28 +8,24 @@ const cache = {
 
 export default cache;
 
-function getDocumentsOfType ({type, ref, orderings}) {
-  let apiLogger = logger.child({type, ref, orderings});
+function getDocumentsOfType({ type, ref, orderings }) {
+  const apiLogger = logger.child({ type, ref, orderings });
   apiLogger.info('Loading documents.');
-  return Prismic.api("https://hisproblemnow.prismic.io/api")
-  .then(function (api) {
-    return api.query(Prismic.Predicates.at('document.type', type), {
-      pageSize: 100,
-      orderings,
-      ref,
-    })
-    .then(function (response) {
-      apiLogger.info({count: response.results.length}, 'Loaded documents.');
-      return response;
-    })
+  return Prismic.api('https://hisproblemnow.prismic.io/api')
+  .then(api => api.query(Prismic.Predicates.at('document.type', type), {
+    pageSize: 100,
+    orderings,
+    ref,
   })
-  .then(function (response) {
-    return response.results;
-  });
+    .then((response) => {
+      apiLogger.info({ count: response.results.length }, 'Loaded documents.');
+      return response;
+    }))
+  .then(response => response.results);
 }
 
-export function getData (ref) {
-  logger.info('Loading all data.')
+export function getData(ref) {
+  logger.info('Loading all data.');
   return Promise.all([
     getDocumentsOfType({
       type: 'call-to-action',
@@ -41,15 +37,13 @@ export function getData (ref) {
       ref,
     }),
   ])
-  .then(function ([callsToAction, [startHere]]) {
-    return {callsToAction, startHere};
-  });
+  .then(([callsToAction, [startHere]]) => ({ callsToAction, startHere }));
 }
 
-export function reloadPrismicData () {
+export function reloadPrismicData() {
   logger.info('Loading data for cache.');
   return getData()
-  .then(function (response) {
+  .then((response) => {
     logger.info('Adding data to cache.');
     cache.callsToAction = response.callsToAction;
     cache.startHere = response.startHere;

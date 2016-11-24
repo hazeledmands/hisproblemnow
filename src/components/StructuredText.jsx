@@ -1,16 +1,15 @@
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 import _ from 'lodash';
 
-function StructuredText ({value}) {
+function StructuredText({ value }) {
   const blocks = [];
   let listItems = [];
 
   /* group contiguous list items */
-  (value || []).forEach(function (block) {
+  (value || []).forEach((block) => {
     if (block.type === 'list-item') {
       listItems.push(block);
-    }
-    else {
+    } else {
       if (listItems.length > 0) {
         blocks.push({
           type: 'unordered-list',
@@ -30,28 +29,28 @@ function StructuredText ({value}) {
   }
 
   return (
-    <div className='structured-text'>
-      {blocks.map(function (block, i) {
+    <div className="structured-text">
+      {blocks.map((block, i) => {
         if (block.type === 'unordered-list') {
-          return <ul key={i}>
+          return (<ul key={i}>
             {block.listItems.map((listItem, i) =>
-              <Block key={i} {...listItem} />
+              <Block key={i} {...listItem} />,
             )}
-          </ul>
+          </ul>);
         }
-        return <Block key={i} {...block} />
+        return <Block key={i} {...block} />;
       })}
     </div>
   );
-};
+}
 
-function Block({type, spans, text}) {
-  let segments = [];
+function Block({ type, spans, text }) {
+  const segments = [];
   let index = 0;
   let tag;
 
-  spans.forEach(function (span) {
-    if(span.start !== index) {
+  spans.forEach((span) => {
+    if (span.start !== index) {
       segments.push({
         text: text.slice(index, span.start),
         type: 'span',
@@ -68,7 +67,7 @@ function Block({type, spans, text}) {
     segments.push({
       text: text.slice(index),
       type: 'span',
-    })
+    });
   }
 
   switch (type) {
@@ -81,32 +80,32 @@ function Block({type, spans, text}) {
       break;
   }
   return React.createElement(tag, {},
-    segments.map(function (segment, i) {
+    segments.map((segment, i) => {
       switch (segment.type) {
         case 'span':
-          return (<span key={i}><Segment text={segment.text} /></span>)
+          return (<span key={i}><Segment text={segment.text} /></span>);
         case 'strong':
-          return (<b key={i}><Segment text={segment.text} /></b>)
+          return (<b key={i}><Segment text={segment.text} /></b>);
         case 'hyperlink':
-          return (<a key={i} href={_.get(segment, 'data.value.url')} target='_blank'><Segment text={segment.text} /></a>)
+          return (<a key={i} href={_.get(segment, 'data.value.url')} target="_blank"><Segment text={segment.text} /></a>);
         default:
-          return (<tt key={i}>{JSON.stringify(segment)}</tt>)
+          return (<tt key={i}>{JSON.stringify(segment)}</tt>);
       }
-    })
+    }),
   );
 }
 
-function Segment({text}) {
-  const lines = text.split('\n')
+function Segment({ text }) {
+  const lines = text.split('\n');
   return (
     <span>
       {lines.map((line, i) =>
         <span key={i}>
           {line}{i < lines.length - 1 && <br />}
-        </span>
+        </span>,
       )}
     </span>
-  )
+  );
 }
 
 export default StructuredText;

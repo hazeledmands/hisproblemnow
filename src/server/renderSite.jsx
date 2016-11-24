@@ -1,28 +1,28 @@
 import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {createStore} from 'redux';
-import {Provider} from 'react-redux';
+import { renderToString } from 'react-dom/server';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 import App from '../components/App';
 import reducer from '../reducer';
 
-export default function (preloadedState, {includePrismicToolbar} = {}) {
+export default function (preloadedState, { includePrismicToolbar } = {}) {
   const store = createStore(reducer, preloadedState);
 
   const html = renderToString(
     <Provider store={store}>
       <App />
-    </Provider>
-  )
+    </Provider>,
+  );
 
   const finalState = store.getState();
   return renderFullPage(html, finalState, includePrismicToolbar);
-};
+}
 
-function renderFullPage (html, preloadedState, includePrismicToolbar) {
+function renderFullPage(html, preloadedState, includePrismicToolbar) {
   let prismicToolbarScriptTag = '';
   if (includePrismicToolbar) {
-    prismicToolbarScriptTag = '<script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>'
+    prismicToolbarScriptTag = '<script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>';
   }
 
   return `
@@ -129,5 +129,5 @@ a.link-button {
         <script src='./static/bundle.js'></script>
       </body>
     </html>
-  `
+  `;
 }

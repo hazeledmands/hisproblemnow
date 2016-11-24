@@ -4,53 +4,49 @@ import express from 'express';
 import moment from 'moment';
 import path from 'path';
 
-import cachedData, {reloadPrismicData, getData} from './prismicStore';
+import cachedData, { reloadPrismicData, getData } from './prismicStore';
 import logger from './logger';
 import renderSite from './renderSite';
 
 const PORT = process.env.PORT || 3000;
 
-var site = express();
+const site = express();
 
-site.use(bunyanMiddleware({logger}));
+site.use(bunyanMiddleware({ logger }));
 
-site.use(function (err, req, res, next) { /* variadic functions in javascript are the worst idea */
+site.use((err, req, res, next) => { /* variadic functions in javascript are the worst idea */
   logger.error(err);
   next(err);
 });
 
 site.use('/static', express.static(path.join(__dirname, '..', '..', 'build', 'public')));
 
-site.get('/', function (req, res, next) {
+site.get('/', (req, res, next) => {
   Promise.resolve(renderSite(cachedData))
-  .then(function (content) {
-    return res.send(content);
-  }, next);
+  .then(content => res.send(content), next);
 });
 
-site.get('/preview', function (req, res, next) {
+site.get('/preview', (req, res, next) => {
   const previewToken = req.query.token;
   res.cookie(Prismic.previewCookie, previewToken, {
     maxAge: moment.duration(30, 'minutes').asMilliseconds(),
     path: '/',
-    httpOnly: false
+    httpOnly: false,
   });
 
   return getData(previewToken)
-  .then(function (previewData) {
-    return renderSite(previewData, {includePrismicToolbar: true});
-  })
-  .then(function (content) {
+  .then(previewData => renderSite(previewData, { includePrismicToolbar: true }))
+  .then((content) => {
     res.send(content);
   }, next);
 });
 
 reloadPrismicData()
-.then(function () {
+.then(() => {
   /* reload local cache of posts every interval */
   setInterval(reloadPrismicData, moment.duration(1, 'minutes').asMilliseconds());
   logger.info('starting up server');
-  site.listen(PORT, function () {
-    logger.info({port: PORT}, 'server listening');
+  site.listen(PORT, () => {
+    logger.info({ port: PORT }, 'server listening');
   });
 });

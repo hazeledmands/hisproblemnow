@@ -6,8 +6,11 @@ var babelConfig = JSON.parse(
 );
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'client', 'index.js'),
+  entry: path.join(__dirname, 'src', 'client', 'index'),
   devtool: 'source-map',
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'build', 'public'),
@@ -16,8 +19,8 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         query: babelConfig,
       }
