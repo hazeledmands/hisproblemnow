@@ -1,6 +1,7 @@
 import Prismic from 'prismic.io';
 import bunyanMiddleware from 'bunyan-middleware';
 import express from 'express';
+import helmet from 'helmet';
 import moment from 'moment';
 import path from 'path';
 
@@ -12,6 +13,12 @@ const PORT = process.env.PORT || 3000;
 
 const site = express();
 
+site.use(helmet());
+site.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+  }
+}));
 site.use(bunyanMiddleware({ logger }));
 
 site.use((err, req, res, next) => { /* variadic functions in javascript are the worst idea */

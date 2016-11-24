@@ -24,6 +24,7 @@
     "bunyan": "^1.8.5",
     "bunyan-middleware": "^0.5.1",
     "express": "~4.13.4",
+    "helmet": "^3.1.0",
     "lodash": "^4.17.2",
     "moment": "^2.16.0",
     "phone-formatter": "0.0.2",
