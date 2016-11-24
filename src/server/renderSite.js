@@ -3,8 +3,8 @@ import {renderToString} from 'react-dom/server';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
-import App from './components/App';
-import reducer from './reducer';
+import App from '../components/App';
+import reducer from '../reducer';
 
 export default function (preloadedState, {includePrismicToolbar} = {}) {
   const store = createStore(reducer, preloadedState);
@@ -24,7 +24,7 @@ function renderFullPage (html, preloadedState, includePrismicToolbar) {
   if (includePrismicToolbar) {
     prismicToolbarScriptTag = '<script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>'
   }
-  
+
   return `
     <!doctype html>
       <head>

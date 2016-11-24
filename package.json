@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "build": "babel src -d build",
-    "start": "node build/index.js",
-    "dev": "babel-node src/index.js",
+    "start": "node build/server",
+    "dev": "babel-node src/server",
     "postinstall": "npm run build"
   },
   "dependencies": {
     "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.8",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-latest": "^6.16.0",
     "bunyan": "^1.8.5",
@@ -22,7 +23,8 @@
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.6",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "webpack": "^1.13.3"
   },
   "repository": {
     "type": "git",
