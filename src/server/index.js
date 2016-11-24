@@ -17,7 +17,7 @@ site.use(helmet());
 site.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-  }
+  },
 }));
 site.use(bunyanMiddleware({ logger }));
 
