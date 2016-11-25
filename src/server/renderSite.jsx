@@ -27,7 +27,7 @@ function renderFullPage(html, preloadedState, includePrismicToolbar) {
       <head>
         <title>His Problem Now</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Patua+One" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
         <link href="./static/bundle.css" rel="stylesheet">
         ${bugsnagScriptTag}
       </head>
