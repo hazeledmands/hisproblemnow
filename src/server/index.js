@@ -18,7 +18,9 @@ const site = express();
 site.use(helmet());
 site.use(helmet.contentSecurityPolicy({
   directives: {
-    defaultSrc: ["'self'"],
+    styleSrc: ['fonts.googleapis.com', "'unsafe-inline'"],
+    scriptSrc: ["'self'", "'unsafe-inline'"],
+    fontSrc: ['fonts.gstatic.com'],
   },
 }));
 site.use(bunyanMiddleware({ logger }));
