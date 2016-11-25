@@ -10,13 +10,17 @@ const PhoneNumbers = ({ value }) => (
   </div>
 );
 
+PhoneNumbers.propTypes = {
+  value: PropTypes.array.isRequired,
+};
+
 function PhoneNumber({ value }) {
   const title = _.get(value, 'title.value');
   const firstName = _.get(value, 'first-name-or-organization.value');
   const lastName = _.get(value, 'last-name.value');
 
   const name = _([title, firstName, lastName]).flatten().join(' ');
-  const phone = phoneFormatter.format(new String(_.get(value, 'phone-number.value', '')), '(NNN) NNN-NNNN');
+  const phone = phoneFormatter.format(String(_.get(value, 'phone-number.value', '')), '(NNN) NNN-NNNN');
 
   return (
     <div className="phone-number-block">
@@ -25,5 +29,9 @@ function PhoneNumber({ value }) {
     </div>
   );
 }
+
+PhoneNumber.propTypes = {
+  value: PropTypes.object.isRequired,
+};
 
 export default PhoneNumbers;

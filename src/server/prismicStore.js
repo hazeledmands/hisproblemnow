@@ -1,14 +1,25 @@
+// @flow
+
 import Prismic from 'prismic.io';
 
 import logger from './logger';
 
 const cache = {
   callsToAction: [],
+  startHere: {},
 };
 
 export default cache;
 
-function getDocumentsOfType({ type, ref, orderings }) {
+function getDocumentsOfType({
+  type,
+  ref,
+  orderings,
+}: {
+  type: string,
+  ref?: string,
+  orderings?: string,
+}) {
   const apiLogger = logger.child({ type, ref, orderings });
   apiLogger.info('Loading documents.');
   return Prismic.api('https://hisproblemnow.prismic.io/api')
@@ -24,7 +35,7 @@ function getDocumentsOfType({ type, ref, orderings }) {
   .then(response => response.results);
 }
 
-export function getData(ref) {
+export function getData(ref?: string) {
   logger.info('Loading all data.');
   return Promise.all([
     getDocumentsOfType({

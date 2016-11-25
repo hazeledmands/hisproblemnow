@@ -1,3 +1,5 @@
-export default function reducer(state = {}) {
+// @flow
+
+export default function reducer(state: {} = {}) {
   return state;
 }

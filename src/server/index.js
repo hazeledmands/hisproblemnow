@@ -1,3 +1,5 @@
+// @flow
+
 import Prismic from 'prismic.io';
 import bunyanMiddleware from 'bunyan-middleware';
 import express from 'express';

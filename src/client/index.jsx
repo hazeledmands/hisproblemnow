@@ -1,3 +1,6 @@
+/* @flow */
+/* eslint-env browser */
+
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
@@ -7,7 +10,7 @@ import App from '../components/App';
 import reducer from '../reducer';
 
 // Grab the state from a global injected into server-generated HTML
-const preloadedState = window.__PRELOADED_STATE__;
+const preloadedState = window.__PRELOADED_STATE__; // eslint-disable-line no-underscore-dangle
 
 // Create Redux store with initial state
 const store = createStore(reducer, preloadedState);

@@ -1,3 +1,7 @@
 {
-  "extends": "airbnb"
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "react/forbid-prop-types": "off"
+  }
 }

@@ -30,19 +30,23 @@ function StructuredText({ value }) {
 
   return (
     <div className="structured-text">
-      {blocks.map((block, i) => {
+      {blocks.map((block, blockKey) => {
         if (block.type === 'unordered-list') {
-          return (<ul key={i}>
-            {block.listItems.map((listItem, i) =>
-              <Block key={i} {...listItem} />,
+          return (<ul key={blockKey}>
+            {block.listItems.map((listItem, listItemKey) =>
+              <Block key={listItemKey} {...listItem} />,
             )}
           </ul>);
         }
-        return <Block key={i} {...block} />;
+        return <Block key={blockKey} {...block} />;
       })}
     </div>
   );
 }
+
+StructuredText.propTypes = {
+  value: PropTypes.array,
+};
 
 function Block({ type, spans, text }) {
   const segments = [];
@@ -87,13 +91,26 @@ function Block({ type, spans, text }) {
         case 'strong':
           return (<b key={i}><Segment text={segment.text} /></b>);
         case 'hyperlink':
-          return (<a key={i} href={_.get(segment, 'data.value.url')} target="_blank"><Segment text={segment.text} /></a>);
+          return (<a
+            key={i}
+            href={_.get(segment, 'data.value.url')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Segment text={segment.text} />
+          </a>);
         default:
           return (<tt key={i}>{JSON.stringify(segment)}</tt>);
       }
     }),
   );
 }
+
+Block.propTypes = {
+  type: PropTypes.string.isRequired,
+  spans: PropTypes.array.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
 function Segment({ text }) {
   const lines = text.split('\n');
@@ -107,5 +124,9 @@ function Segment({ text }) {
     </span>
   );
 }
+
+Segment.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 
 export default StructuredText;

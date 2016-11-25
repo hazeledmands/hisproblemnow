@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
@@ -6,18 +8,6 @@ import { Provider } from 'react-redux';
 import App from '../components/App';
 import reducer from '../reducer';
 
-export default function (preloadedState, { includePrismicToolbar } = {}) {
-  const store = createStore(reducer, preloadedState);
-
-  const html = renderToString(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-  );
-
-  const finalState = store.getState();
-  return renderFullPage(html, finalState, includePrismicToolbar);
-}
 
 function renderFullPage(html, preloadedState, includePrismicToolbar) {
   let prismicToolbarScriptTag = '';
@@ -125,9 +115,26 @@ a.link-button {
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
         </script>
-	      ${prismicToolbarScriptTag}
+        ${prismicToolbarScriptTag}
         <script src='./static/bundle.js'></script>
       </body>
     </html>
   `;
+}
+
+export default function (preloadedState: {}, {
+  includePrismicToolbar,
+}: {
+  includePrismicToolbar: boolean,
+} = {}) {
+  const store = createStore(reducer, preloadedState);
+
+  const html = renderToString(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+  );
+
+  const finalState = store.getState();
+  return renderFullPage(html, finalState, includePrismicToolbar);
 }
