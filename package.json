@@ -24,6 +24,7 @@
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.16.0",
+    "bugsnag": "^1.9.0",
     "bunyan": "^1.8.5",
     "bunyan-middleware": "^0.5.1",
     "express": "~4.13.4",

@@ -1,6 +1,7 @@
 // @flow
 
 import Prismic from 'prismic.io';
+import bugsnag from 'bugsnag';
 import bunyanMiddleware from 'bunyan-middleware';
 import express from 'express';
 import helmet from 'helmet';
@@ -11,6 +12,10 @@ import cachedData, { reloadPrismicData, getData } from './prismicStore';
 import logger from './logger';
 import renderSite from './renderSite';
 
+if (process.env.BUGSNAG_API_KEY) {
+  bugsnag.register(process.env.BUGSNAG_API_KEY);
+}
+
 const PORT = process.env.PORT || 3000;
 
 const site = express();
@@ -18,9 +23,20 @@ const site = express();
 site.use(helmet());
 site.use(helmet.contentSecurityPolicy({
   directives: {
-    styleSrc: ['fonts.googleapis.com', "'unsafe-inline'"],
-    scriptSrc: ["'self'", "'unsafe-inline'"],
-    fontSrc: ['fonts.gstatic.com'],
+    styleSrc: [
+      "'unsafe-inline'",
+      'fonts.googleapis.com',
+    ],
+    scriptSrc: [
+      "'self'",
+      "'unsafe-inline'",
+      'd2wy8f7a9ursnm.cloudfront.net', /* bugsnag */
+      'static.cdn.prismic.io', /* prismic toolbar */
+      'code.jquery.com', /* prismic toolbar */
+    ],
+    fontSrc: [
+      'fonts.gstatic.com',
+    ],
   },
 }));
 site.use(bunyanMiddleware({ logger }));

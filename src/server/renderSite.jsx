@@ -11,6 +11,13 @@ import reducer from '../reducer';
 
 function renderFullPage(html, preloadedState, includePrismicToolbar) {
   let prismicToolbarScriptTag = '';
+  let bugsnagScriptTag = '';
+
+  if (process.env.BUGSNAG_API_KEY) {
+    bugsnagScriptTag = `<script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js"
+        data-apikey="${process.env.BUGSNAG_API_KEY}"></script>`;
+  }
+
   if (includePrismicToolbar) {
     prismicToolbarScriptTag = '<script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"></script>';
   }
@@ -21,6 +28,7 @@ function renderFullPage(html, preloadedState, includePrismicToolbar) {
         <title>His Problem Now</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700|Patua+One" rel="stylesheet">
+        ${bugsnagScriptTag}
         <style>
 
 body {
