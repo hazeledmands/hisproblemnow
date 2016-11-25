@@ -5,6 +5,7 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
 
+import TodoList from '../../containers/TodoList';
 import CallToAction from '../CallToAction';
 import StructuredText from '../StructuredText';
 import styles from './styles.css';
@@ -23,6 +24,8 @@ const App = ({ callsToAction, startHere }) => (
         <CallToAction {...callToAction.data} uid={callToAction.uid} key={callToAction.uid} />
       ))}
     </div>
+
+    <TodoList />
 
     <div id="start-here" styleName="start-here">
       <h2>{startHere.data['start-here.title'].value}</h2>

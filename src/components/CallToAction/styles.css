@@ -2,6 +2,7 @@
     margin: 0.5vh 2vh 2vh;
     border: 1px solid grey;
     background: white;
+    position: relative;
 }
 
 .call-to-action h1 {
