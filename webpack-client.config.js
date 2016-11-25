@@ -1,3 +1,4 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
@@ -9,6 +10,9 @@ const plugins = [
     'process.env': {
       NODE_ENV: JSON.stringify(env),
     },
+  }),
+  new ExtractTextPlugin('bundle.css', {
+    allChunks: true,
   }),
 ];
 
@@ -36,6 +40,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: babelConfig,
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'),
       },
     ],
   },

@@ -1,0 +1,28 @@
+.call-to-action {
+    margin: 0.5vh 2vh 2vh;
+    border: 1px solid grey;
+    background: white;
+}
+
+.call-to-action h1 {
+    margin: 0;
+    padding: 1vh 2vh 0;
+}
+
+.call-to-action time {
+    font-weight: bold;
+    padding: 0 2vh;
+}
+
+.call-to-action .script {
+    padding: 0 2vh;
+    overflow: hidden;
+}
+
+.call-to-action .notes {
+    border-top: 1px solid grey;
+    margin: 0;
+    padding: 0 2vh;
+    background-color: #eaeaea;
+    overflow: hidden;
+}

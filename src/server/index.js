@@ -24,7 +24,7 @@ site.use(helmet());
 site.use(helmet.contentSecurityPolicy({
   directives: {
     styleSrc: [
-      "'unsafe-inline'",
+      "'self'",
       'fonts.googleapis.com',
     ],
     scriptSrc: [

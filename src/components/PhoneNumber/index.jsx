@@ -1,18 +1,9 @@
+import CSSModules from 'react-css-modules';
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import phoneFormatter from 'phone-formatter';
 
-const PhoneNumbers = ({ value }) => (
-  <div className="phone-numbers">
-    {(value || []).map((number, i) => (
-      <PhoneNumber key={i} value={number} />
-    ))}
-  </div>
-);
-
-PhoneNumbers.propTypes = {
-  value: PropTypes.array.isRequired,
-};
+import styles from './styles.css';
 
 function PhoneNumber({ value }) {
   const title = _.get(value, 'title.value');
@@ -23,9 +14,9 @@ function PhoneNumber({ value }) {
   const phone = phoneFormatter.format(String(_.get(value, 'phone-number.value', '')), '(NNN) NNN-NNNN');
 
   return (
-    <div className="phone-number-block">
-      {name && <div className="name">{name}</div>}
-      <div className="phone-number">{phone}</div>
+    <div styleName="phone-number-block">
+      {name && <div styleName="name">{name}</div>}
+      <div styleName="phone-number">{phone}</div>
     </div>
   );
 }
@@ -34,4 +25,4 @@ PhoneNumber.propTypes = {
   value: PropTypes.object.isRequired,
 };
 
-export default PhoneNumbers;
+export default CSSModules(PhoneNumber, styles);

@@ -1,0 +1,51 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #f0f6ff;
+    margin: 0 auto;
+    max-width: 780px;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Patua One', sans-serif;
+}
+
+.title {
+  padding: 1vh 2.5vh;
+  margin: 0;
+  text-align: center;
+}
+
+.subtitle {
+  padding: 1vh 2.5vh 0;
+  margin: 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.intro, .start-here {
+  padding: 1vh 2.5vh;
+  margin: 0;
+}
+
+.link-button {
+  display: block;
+  background-color: #3fc1e2;
+  color: #fff;
+  border: 1px solid #0089a9;
+  border-radius: 5px;
+  padding: 0.5em;
+  margin: 0.5em auto;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  max-width: 360px;
+  text-align: center;
+}
+
+.intro {
+  margin-bottom: 5vh;
+}
+
+.start-here {
+  margin-top: 5vh;
+}
