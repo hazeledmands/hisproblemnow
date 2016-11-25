@@ -15,7 +15,8 @@ function renderFullPage(html, preloadedState, includePrismicToolbar) {
 
   if (process.env.BUGSNAG_API_KEY) {
     bugsnagScriptTag = `<script src="//d2wy8f7a9ursnm.cloudfront.net/bugsnag-3.min.js"
-        data-apikey="${process.env.BUGSNAG_API_KEY}"></script>`;
+        data-apikey="${process.env.BUGSNAG_API_KEY}"
+        data-releasestage="${process.env.NODE_ENV || 'development'}"></script>`;
   }
 
   if (includePrismicToolbar) {
