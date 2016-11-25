@@ -10,10 +10,15 @@ import App from '../components/App';
 import reducer from '../reducer';
 
 // Grab the state from a global injected into server-generated HTML
-const preloadedState = window.__PRELOADED_STATE__; // eslint-disable-line no-underscore-dangle
+/* eslint-disable no-underscore-dangle */
+const preloadedState = window.__PRELOADED_STATE__;
+/* eslint-enable */
 
 // Create Redux store with initial state
-const store = createStore(reducer, preloadedState);
+/* eslint-disable no-underscore-dangle */
+const store = createStore(reducer, preloadedState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+/* eslint-enable */
 
 render(
   <Provider store={store}>
