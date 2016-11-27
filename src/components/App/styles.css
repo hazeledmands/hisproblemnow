@@ -1,29 +1,39 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    background: #f0f6ff;
-    margin: 0 auto;
-    max-width: 780px;
+  font-family: 'Open Sans', sans-serif;
+  background: #f0f6ff;
+  margin: 0 auto;
+  max-width: 780px;
+  font-size: 12pt;
 }
 
-h1, h2, h3, h4, h5 {
-    font-family: 'Patua One', sans-serif;
+a {
+  color: #27798e;
+}
+
+h1 {
+  font-size: 160%;
+}
+
+h2 {
+  font-size: 120%;
 }
 
 .title {
-  padding: 1vh 2.5vh;
+  padding: 10vh 2.5vw 2vh;
   margin: 0;
   text-align: center;
+  font-size: 200%;
 }
 
 .subtitle {
-  padding: 1vh 2.5vh 0;
+  padding: 1vh 2.5vw 2vh;
   margin: 0;
   font-weight: bold;
   text-align: center;
 }
 
 .intro, .start-here {
-  padding: 1vh 2.5vh;
+  padding: 1vh 2.5vw;
   margin: 0;
 }
 
@@ -31,8 +41,6 @@ h1, h2, h3, h4, h5 {
   display: block;
   background-color: #3fc1e2;
   color: #fff;
-  border: 1px solid #0089a9;
-  border-radius: 5px;
   padding: 0.5em;
   margin: 0.5em auto;
   text-align: center;
@@ -43,9 +51,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .intro {
-  margin-bottom: 5vh;
 }
 
 .start-here {
-  margin-top: 5vh;
+  margin: 0;
 }

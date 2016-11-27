@@ -32,7 +32,7 @@ const App = ({ callsToAction, startHere }) => (
 
       <StructuredText value={startHere.data['start-here.content'].value} />
 
-      <a styleName="link-button" href="#title">Go back to the phone sheet.</a>
+      <a styleName="link-button" href="#title">Go back to the phone sheet</a>
     </div>
   </div>
 
