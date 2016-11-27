@@ -5,7 +5,11 @@ import uuid from 'uuid';
 
 import { ADD_TODO, TOGGLE_TODO } from './actions';
 
-export default function reducer(state: {} = {}, action: {}) {
+export default function reducer(
+  state: { todos: [] },
+  action: {
+    type: string, actionId?: string, uid?: string
+  }) {
   switch (action.type) {
     case ADD_TODO:
       if (_.find(state.todos, { actionId: action.actionId })) {
