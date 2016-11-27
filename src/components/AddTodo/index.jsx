@@ -18,7 +18,7 @@ const AddTodo = ({onClick, actionId, todo}) => {
 AddTodo.propTypes = {
   onClick: PropTypes.func.isRequired,
   actionId: PropTypes.string.isRequired,
-  todo: PropTypes.object.isRequired
+  todo: PropTypes.object
 }
 
 export default CSSModules(AddTodo, styles);
