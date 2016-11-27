@@ -7,7 +7,6 @@ import logger from './logger';
 const cache = {
   callsToAction: [],
   startHere: {},
-  todos: [],
 };
 
 export default cache;
