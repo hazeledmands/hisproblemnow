@@ -6,7 +6,7 @@ import styles from './styles.css';
 const AddTodo = ({onClick, actionId, todo}) => {
   let text = "+"
   if (todo) {
-    text = todo.completed ? "☑" : "☐"
+    text = todo.completed ? "☑" : ""
   }
   return (
     <button styleName='add-todo' onClick={function() {onClick(actionId)}}>

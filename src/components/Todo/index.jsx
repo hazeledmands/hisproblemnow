@@ -1,14 +1,12 @@
 import React, { PropTypes } from 'react';
+import CSSModules from 'react-css-modules';
 
 import CallToAction from '../CallToAction';
+import styles from './styles.css';
 
 const Todo = ({ onClick, completed, callToAction }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
-    >
+  <li onClick={onClick}
+      styleName={completed ? 'todo-completed' : 'todo'}>
     <CallToAction {...callToAction.data} uid={callToAction.uid} key={callToAction.uid} />
   </li>
 )
@@ -20,4 +18,4 @@ Todo.propTypes = {
   callToAction: PropTypes.object.isRequired
 }
 
-export default Todo
+export default CSSModules(Todo, styles);
