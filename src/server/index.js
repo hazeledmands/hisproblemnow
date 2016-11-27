@@ -7,9 +7,11 @@ import express from 'express';
 import helmet from 'helmet';
 import moment from 'moment';
 import path from 'path';
+import { routerForExpress } from 'redux-little-router';
 
 import cachedData, { reloadPrismicData, getData } from './prismicStore';
 import logger from './logger';
+import routes from '../routes';
 import renderSite from './renderSite';
 
 if (process.env.BUGSNAG_API_KEY) {
@@ -48,11 +50,6 @@ site.use((err, req, res, next) => { /* variadic functions in javascript are the 
 
 site.use('/static', express.static(path.join(__dirname, '..', '..', 'build', 'public')));
 
-site.get('/', (req, res, next) => {
-  Promise.resolve(renderSite(cachedData))
-  .then(content => res.send(content), next);
-});
-
 site.get('/preview', (req, res, next) => {
   const previewToken = req.query.token;
   res.cookie(Prismic.previewCookie, previewToken, {
@@ -61,11 +58,25 @@ site.get('/preview', (req, res, next) => {
     httpOnly: false,
   });
 
+  const router = routerForExpress({
+    routes, request: req,
+  });
+
   return getData(previewToken)
-  .then(previewData => renderSite(previewData, { includePrismicToolbar: true }))
+    .then(previewData => renderSite(router, previewData,
+                                    { includePrismicToolbar: true }))
   .then((content) => {
     res.send(content);
   }, next);
+});
+
+site.get('*', (req, res, next) => {
+  const router = routerForExpress({
+    routes, request: req,
+  });
+
+  Promise.resolve(renderSite(router, cachedData))
+  .then(content => res.send(content), next);
 });
 
 reloadPrismicData()

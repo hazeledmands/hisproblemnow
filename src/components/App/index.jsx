@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import CSSModules from 'react-css-modules';
+import { Link, AbsoluteFragment as Fragment } from 'redux-little-router';
 
 import TodoList from '../../containers/TodoList';
 import CallToAction from '../CallToAction';
@@ -15,17 +16,23 @@ const App = ({ callsToAction, startHere }) => (
     <h1 id="title" styleName="title">{startHere.data['start-here.page-title'].value}</h1>
     <h2 styleName="subtitle">{startHere.data['start-here.subtitle'].value}</h2>
 
+    <Link href="/todo">Todos</Link>
+
     <div id="intro" styleName="intro">
       <a styleName="link-button" href="#start-here">{startHere.data['start-here.button-text'].value}</a>
     </div>
 
-    <div id="calls-to-action">
-      {callsToAction.map(callToAction => (
-        <CallToAction {...callToAction.data} uid={callToAction.uid} key={callToAction.uid} />
-      ))}
-    </div>
+    <Fragment forRoute="/">
+      <div id="calls-to-action">
+        {callsToAction.map(callToAction => (
+          <CallToAction {...callToAction.data} uid={callToAction.uid} key={callToAction.uid} />
+        ))}
+      </div>
+    </Fragment>
 
-    <TodoList />
+    <Fragment forRoute="/todo">
+      <TodoList />
+    </Fragment>
 
     <div id="start-here" styleName="start-here">
       <h2>{startHere.data['start-here.title'].value}</h2>
