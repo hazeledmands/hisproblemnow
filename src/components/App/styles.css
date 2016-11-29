@@ -18,6 +18,11 @@ h2 {
   font-size: 120%;
 }
 
+p {
+  padding: 0;
+  margin: 1.5ex 0;
+}
+
 .title {
   padding: 10vh 2.5vw 2vh;
   margin: 0;

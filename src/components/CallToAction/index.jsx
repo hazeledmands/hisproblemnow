@@ -11,14 +11,16 @@ const CallToAction = props => (
 
     <time>{props['call-to-action.date'].value}</time>
 
-    {props['call-to-action.phone-numbers'] && <PhoneNumbers {...props['call-to-action.phone-numbers']} />}
-
     <div styleName="script">
       <StructuredText {...props['call-to-action.script']} />
     </div>
 
     <div styleName="notes">
       <StructuredText {...props['call-to-action.notes']} />
+    </div>
+
+    <div styleName="phone-numbers">
+      {props['call-to-action.phone-numbers'] && <PhoneNumbers {...props['call-to-action.phone-numbers']} />}
     </div>
   </div>
 );

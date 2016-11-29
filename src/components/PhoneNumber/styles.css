@@ -1,10 +1,18 @@
 .phone-number-block {
   padding: 0;
-  margin: 0 0 1em;
-}
-
-.phone-number {
+  margin: 0 0 1.5ex;
 }
 
 .name {
+  display: inline;
+  font-weight: bold;
+}
+
+.name::after {
+  content: ' ';
+  display: inline;
+}
+
+.phone-number {
+  display: inline;
 }
