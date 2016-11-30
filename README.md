@@ -11,10 +11,11 @@ Will watch changes, but doesn't yet do hot reloading.
 
 ## Tests
 
-Right now there are no unit tests but we're doing type checking with flow and linting with eslint.
-
 ```
-npm run test
+npm test             # everything (runs in CI)
+npm run lint         # eslint
+npm run check-types  # flow
+npm run unit-tests   # jest
 ```
 
 ## Deploying

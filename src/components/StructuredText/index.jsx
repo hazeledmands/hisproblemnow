@@ -1,45 +1,40 @@
 import React, { PropTypes } from 'react';
 import _ from 'lodash';
 
-function StructuredText({ value }) {
-  const blocks = [];
-  let listItems = [];
+import groupContiguousByType from './groupContiguousByType';
 
-  /* group contiguous list items */
-  (value || []).forEach((block) => {
-    if (block.type === 'list-item') {
-      listItems.push(block);
-    } else {
-      if (listItems.length > 0) {
-        blocks.push({
-          type: 'unordered-list',
-          listItems,
-        });
-        listItems = [];
-      }
-      blocks.push(block);
-    }
-  });
-  if (listItems.length > 0) {
-    blocks.push({
-      type: 'unordered-list',
-      listItems,
-    });
-    listItems = [];
-  }
+const TAG_BY_BLOCK_TYPE = {
+  'list-item': 'li',
+  'o-list-item': 'li',
+  paragraph: 'p',
+};
+
+const WRAPPER_TAG_BY_BLOCK_TYPE = {
+  'list-item': 'ul',
+  'o-list-item': 'ol',
+};
+
+function StructuredText({ value }) {
+  const groups = groupContiguousByType(value || []);
 
   return (
     <div className="structured-text">
-      {blocks.map((block, blockKey) => {
-        if (block.type === 'unordered-list') {
-          return (<ul key={blockKey}>
-            {block.listItems.map((listItem, listItemKey) =>
-              <Block key={listItemKey} {...listItem} />,
-            )}
-          </ul>);
+      {_.flatten(groups.map((group, groupKey) => {
+        if (group.length === 0) return [];
+
+        const groupType = group[0].type;
+        const groupBlocks = group.map((block, blockKey) => <Block
+          key={`group-${groupKey}|block-${blockKey}`}
+          {...block}
+        />);
+
+        if (WRAPPER_TAG_BY_BLOCK_TYPE[groupType]) {
+          const tag = WRAPPER_TAG_BY_BLOCK_TYPE[groupType];
+          return React.createElement(tag, { key: `group-${groupKey}` }, groupBlocks);
         }
-        return <Block key={blockKey} {...block} />;
-      })}
+
+        return groupBlocks;
+      }))}
     </div>
   );
 }
@@ -50,8 +45,8 @@ StructuredText.propTypes = {
 
 function Block({ type, spans, text }) {
   const segments = [];
+  const tag = TAG_BY_BLOCK_TYPE[type] || 'p';
   let index = 0;
-  let tag;
 
   spans.forEach((span) => {
     if (span.start !== index) {
@@ -67,22 +62,14 @@ function Block({ type, spans, text }) {
     });
     index = span.end;
   });
-  if (index < text.length - 1) {
+
+  if (index < text.length) {
     segments.push({
       text: text.slice(index),
       type: 'span',
     });
   }
 
-  switch (type) {
-    case 'list-item':
-      tag = 'li';
-      break;
-    case 'paragraph':
-    default:
-      tag = 'p';
-      break;
-  }
   return React.createElement(tag, {},
     segments.map((segment, i) => {
       switch (segment.type) {

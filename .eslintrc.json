@@ -1,7 +1,13 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended"
+  ],
   "rules": {
     "react/forbid-prop-types": "off"
-  }
+  },
+  "plugins": [
+    "flowtype"
+  ]
 }
