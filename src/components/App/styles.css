@@ -4,23 +4,31 @@ body {
   margin: 0 auto;
   max-width: 780px;
   font-size: 12pt;
-}
-
-a {
-  color: #27798e;
+  line-height: 1.5em;
+  padding-bottom: 10vh;
 }
 
 h1 {
   font-size: 160%;
+  line-height: 1.2em;
 }
 
 h2 {
   font-size: 120%;
+  line-height: 1.2em;
 }
 
 p {
   padding: 0;
   margin: 1.5ex 0;
+}
+
+ul, li {
+  margin: 1ex 0;
+}
+
+a {
+  color: #27798e;
 }
 
 .title {

@@ -1,0 +1,204 @@
+exports[`test does not render when provided with no input 1`] = `
+<div
+  className="structured-text" />
+`;
+
+exports[`test renders a paragraph 1`] = `
+<div
+  className="structured-text">
+  <p>
+    <span>
+      <span>
+        <span>
+          Lorem ipsum dolor sit amet
+        </span>
+      </span>
+    </span>
+  </p>
+</div>
+`;
+
+exports[`test renders bold text 1`] = `
+<div
+  className="structured-text">
+  <p>
+    <span>
+      <span>
+        <span>
+          Lorem ipsum 
+        </span>
+      </span>
+    </span>
+    <b>
+      <span>
+        <span>
+          dolor sit amet
+        </span>
+      </span>
+    </b>
+    <span>
+      <span>
+        <span>
+          !
+        </span>
+      </span>
+    </span>
+  </p>
+</div>
+`;
+
+exports[`test renders combinations of structured text elements 1`] = `
+<div
+  className="structured-text">
+  <ol>
+    <li>
+      <span>
+        <span>
+          <span>
+            Lorem ipsum dolor sit amet!
+          </span>
+        </span>
+      </span>
+    </li>
+  </ol>
+  <ul>
+    <li>
+      <span>
+        <span>
+          <span>
+            Sed do eiusmod tempor incidunt.
+          </span>
+        </span>
+      </span>
+    </li>
+  </ul>
+  <p>
+    <span>
+      <span>
+        <span>
+          Ut labore et dolore.
+        </span>
+      </span>
+    </span>
+  </p>
+</div>
+`;
+
+exports[`test renders hyperlinks 1`] = `
+<div
+  className="structured-text">
+  <p>
+    <a
+      href="http://example.com"
+      rel="noopener noreferrer"
+      target="_blank">
+      <span>
+        <span>
+          Lorem
+        </span>
+      </span>
+    </a>
+    <span>
+      <span>
+        <span>
+           ipsum dolor sit amet!
+        </span>
+      </span>
+    </span>
+  </p>
+</div>
+`;
+
+exports[`test renders multiple paragraphs 1`] = `
+<div
+  className="structured-text">
+  <p>
+    <span>
+      <span>
+        <span>
+          Lorem ipsum dolor sit amet
+        </span>
+      </span>
+    </span>
+  </p>
+  <p>
+    <span>
+      <span>
+        <span>
+          Consectitur adipiscing elit
+        </span>
+      </span>
+    </span>
+  </p>
+</div>
+`;
+
+exports[`test renders ordered lists 1`] = `
+<div
+  className="structured-text">
+  <ol>
+    <li>
+      <span>
+        <span>
+          <span>
+            Lorem ipsum dolor sit amet!
+          </span>
+        </span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span>
+          <span>
+            Sed do eiusmod tempor incidunt.
+          </span>
+        </span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span>
+          <span>
+            Ut labore et dolore.
+          </span>
+        </span>
+      </span>
+    </li>
+  </ol>
+</div>
+`;
+
+exports[`test renders unordered lists 1`] = `
+<div
+  className="structured-text">
+  <ul>
+    <li>
+      <span>
+        <span>
+          <span>
+            Lorem ipsum dolor sit amet!
+          </span>
+        </span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span>
+          <span>
+            Sed do eiusmod tempor incidunt.
+          </span>
+        </span>
+      </span>
+    </li>
+    <li>
+      <span>
+        <span>
+          <span>
+            Ut labore et dolore.
+          </span>
+        </span>
+      </span>
+    </li>
+  </ul>
+</div>
+`;
