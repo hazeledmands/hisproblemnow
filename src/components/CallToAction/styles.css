@@ -1,27 +1,34 @@
 .call-to-action {
-    position: relative;
-    margin: 6vh 2.5vw;
-    padding: 4%;
-    background: #fff;
+  position: relative;
+  margin: 6vh 2.5vw;
+  padding: 1ex 5vw;
+  background: #fff;
+  box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.26);
 }
 
 .call-to-action h1 {
-    margin: 0;
-    padding: 0;
+  margin: 1ex 0 0 0;
+  padding: 0;
 }
 
 .call-to-action time {
-    font-weight: 700;
-    padding: 0 0 2.5vh;
-    display: block;
+  font-size: 85%;
+  padding: 1ex 0 1ex;
+  display: block;
+  color: rgb(173, 173, 173);
 }
 
-.call-to-action .script {
-    padding: 0;
-    overflow: hidden;
+.script {
+  padding: 0;
+  overflow: hidden;
 }
 
-.call-to-action .notes {
-    margin: 0;
-    padding: 0;
+.notes {
+  margin: 0;
+  padding: 0;
+}
+
+.phone-numbers {
+  margin: 0;
+  padding: 1ex 0 0 0;
 }
