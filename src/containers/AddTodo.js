@@ -10,8 +10,8 @@ const mapStateToProps = (state, { actionId }) => (
 
 const mapDispatchToProps = dispatch => (
   {
-    onClick: (actionId) => {
-      dispatch(addTodo(actionId));
+    onClick: (actionId, phoneNumbers) => {
+      dispatch(addTodo(actionId, phoneNumbers.value));
     },
   }
 );

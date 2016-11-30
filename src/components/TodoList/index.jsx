@@ -17,7 +17,8 @@ TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
     uid: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
-    callToAction: PropTypes.object.isRequired
+    callToAction: PropTypes.object.isRequired,
+    target: PropTypes.object.isRequired,
   }).isRequired).isRequired,
   onTodoClick: PropTypes.func.isRequired
 }

@@ -3,7 +3,6 @@
 }
 .todo:before {
   content: "☐";
-  position: absolute;
 }
 .todo-completed {
   composes: todo;

@@ -3,13 +3,14 @@ import CSSModules from 'react-css-modules';
 
 import styles from './styles.css';
 
-const AddTodo = ({onClick, actionId, todo}) => {
+const AddTodo = ({onClick, actionId, phoneNumbers, todo}) => {
   let text = "+"
   if (todo) {
     text = todo.completed ? "☑" : ""
   }
   return (
-    <button styleName='add-todo' onClick={function() {onClick(actionId)}}>
+    <button styleName='add-todo'
+            onClick={function() {onClick(actionId, phoneNumbers)}}>
       {text}
     </button>
   )

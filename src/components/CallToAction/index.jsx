@@ -12,7 +12,8 @@ const CallToAction = props => (
 
     <time>{props['call-to-action.date'].value}</time>
 
-    <AddTodo actionId={props.uid} />
+    <AddTodo actionId={props.uid}
+             phoneNumbers={props['call-to-action.phone-numbers'] || []} />
 
     {props['call-to-action.phone-numbers'] && <PhoneNumbers {...props['call-to-action.phone-numbers']} />}
 

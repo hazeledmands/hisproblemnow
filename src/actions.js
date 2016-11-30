@@ -1,8 +1,8 @@
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 
-export function addTodo(actionId) {
-  return { type: ADD_TODO, actionId };
+export function addTodo(actionId, phoneNumbers) {
+  return { type: ADD_TODO, actionId, phoneNumbers };
 }
 
 export function toggleTodo(uid) {
