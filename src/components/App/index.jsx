@@ -16,11 +16,11 @@ const App = ({ callsToAction, startHere }) => (
     <h1 id="title" styleName="title">{startHere.data['start-here.page-title'].value}</h1>
     <h2 styleName="subtitle">{startHere.data['start-here.subtitle'].value}</h2>
 
-    <div id="intro" styleName="intro">
-      <a styleName="link-button" href="#start-here">{startHere.data['start-here.button-text'].value}</a>
-    </div>
-
     <Fragment forRoute="/">
+      <div id="intro" styleName="intro">
+        <Link styleName="link-button" href="/start-here">{startHere.data['start-here.button-text'].value}</Link>
+      </div>
+
       <div id="calls-to-action">
         {callsToAction.map(callToAction => (
           <CallToAction {...callToAction.data} uid={callToAction.uid} key={callToAction.uid} />
@@ -32,13 +32,13 @@ const App = ({ callsToAction, startHere }) => (
       <TodoList />
     </Fragment>
 
-    <div id="start-here" styleName="start-here">
-      <h2>{startHere.data['start-here.title'].value}</h2>
-
-      <StructuredText value={startHere.data['start-here.content'].value} />
-
-      <a styleName="link-button" href="#title">Go back to the phone sheet</a>
-    </div>
+    <Fragment forRoute="/start-here">
+      <div id="start-here" styleName="start-here">
+        <h2>{startHere.data['start-here.title'].value}</h2>
+        <StructuredText value={startHere.data['start-here.content'].value} />
+        <Link styleName="link-button" href="/">Go back to the phone sheet</Link>
+      </div>
+    </Fragment>
   </div>
 
 );

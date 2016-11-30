@@ -1,5 +1,6 @@
 const routes = {
   '/': {},
+  '/start-here': {},
   '/todo': {},
 };
 
