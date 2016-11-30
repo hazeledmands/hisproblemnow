@@ -11,7 +11,7 @@
     "start": "node build/server",
     "dev": "concurrently \"npm run build-client -- --progress --watch\" \"npm run build-server-webpack -- --progress --watch\" \"nodemon --exec babel-node src/server --ignore build --ignore src/client\"",
     "postinstall": "npm run build",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "check-types": "flow",
     "unit-test": "jest",
     "test": "npm run lint && npm run check-types && npm run unit-test"

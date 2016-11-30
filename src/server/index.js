@@ -7,6 +7,7 @@ import express from 'express';
 import helmet from 'helmet';
 import moment from 'moment';
 import path from 'path';
+import type { $Request, $Response, NextFunction } from 'express';
 
 import cachedData, { reloadPrismicData, getData } from './prismicStore';
 import logger from './logger';
@@ -40,20 +41,19 @@ site.use(helmet.contentSecurityPolicy({
   },
 }));
 site.use(bunyanMiddleware({ logger }));
-
-site.use((err, req, res, next) => { /* variadic functions in javascript are the worst idea */
-  logger.error(err);
+site.use((err: ?Error, req: $Request, res: $Response, next: NextFunction) => {
+  logger.error({ err, req, res }, 'Request error');
   next(err);
 });
 
 site.use('/static', express.static(path.join(__dirname, '..', '..', 'build', 'public')));
 
-site.get('/', (req, res, next) => {
+site.get('/', (req: $Request, res: $Response, next: NextFunction) => {
   Promise.resolve(renderSite(cachedData))
   .then(content => res.send(content), next);
 });
 
-site.get('/preview', (req, res, next) => {
+site.get('/preview', (req: $Request, res: $Response, next: NextFunction) => {
   const previewToken = req.query.token;
   res.cookie(Prismic.previewCookie, previewToken, {
     maxAge: moment.duration(30, 'minutes').asMilliseconds(),

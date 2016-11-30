@@ -5,9 +5,12 @@
     "plugin:flowtype/recommended"
   ],
   "rules": {
-    "react/forbid-prop-types": "off"
+    "react/forbid-prop-types": "off",
+    "no-duplicate-imports": "off",
+    "import/no-duplicates": 1
   },
   "plugins": [
-    "flowtype"
+    "flowtype",
+    "import"
   ]
 }
