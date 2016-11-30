@@ -16,8 +16,6 @@ const App = ({ callsToAction, startHere }) => (
     <h1 id="title" styleName="title">{startHere.data['start-here.page-title'].value}</h1>
     <h2 styleName="subtitle">{startHere.data['start-here.subtitle'].value}</h2>
 
-    <Link href="/todo">Todos</Link>
-
     <div id="intro" styleName="intro">
       <a styleName="link-button" href="#start-here">{startHere.data['start-here.button-text'].value}</a>
     </div>

@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
 
-import AddTodo from '../../containers/AddTodo';
 import StructuredText from '../StructuredText';
 import PhoneNumbers from '../PhoneNumbers';
 import styles from './styles.css';
@@ -11,9 +10,6 @@ const CallToAction = props => (
     <h1>{props['call-to-action.title'].value[0].text}</h1>
 
     <time>{props['call-to-action.date'].value}</time>
-
-    <AddTodo actionId={props.uid}
-             phoneNumbers={props['call-to-action.phone-numbers'] || []} />
 
     <div styleName="script">
       <StructuredText {...props['call-to-action.script']} />
