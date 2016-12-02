@@ -1,0 +1,13 @@
+.todo {
+  list-style-type: none;
+}
+.todo:before {
+  content: "☐";
+}
+.todo-completed {
+  composes: todo;
+  text-decoration: line-through;
+}
+.todo-completed:before {
+  content: "☑";
+}

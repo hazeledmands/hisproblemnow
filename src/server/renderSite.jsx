@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { RouterProvider } from 'redux-little-router';
 
 import App from '../../build/App';
 import reducer from '../reducer';
@@ -43,16 +44,26 @@ function renderFullPage(html, preloadedState, includePrismicToolbar) {
   `;
 }
 
-export default function (preloadedState: {}, {
+export default function (
+  router: { routerEnhancer: {}, routerMiddleware: {} },
+  preloadedState: {}, {
   includePrismicToolbar,
 }: {
   includePrismicToolbar: boolean,
 } = {}) {
-  const store = createStore(reducer, preloadedState);
+  const store = createStore(reducer, preloadedState, 
+                            compose(
+                              router.routerEnhancer,
+                              applyMiddleware(
+                                router.routerMiddleware
+                              )
+                            ));
 
   const html = renderToString(
     <Provider store={store}>
-      <App />
+      <RouterProvider store={store}>
+        <App />
+      </RouterProvider>
     </Provider>,
   );
 

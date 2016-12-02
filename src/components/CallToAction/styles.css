@@ -1,4 +1,5 @@
 .call-to-action {
+  position: relative;
   margin: 6vh 2.5vw;
   padding: 1ex 5vw;
   background: #fff;
