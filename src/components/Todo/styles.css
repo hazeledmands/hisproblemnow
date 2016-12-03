@@ -2,12 +2,30 @@
   list-style-type: none;
 }
 .todo:before {
-  content: "☐";
 }
 .todo-completed {
   composes: todo;
   text-decoration: line-through;
 }
 .todo-completed:before {
-  content: "☑";
+}
+.todo h1,
+.todo time {
+  display: none;
+}
+.todo-completed-call-to-action {
+  display: none;
+}
+.todo-call-to-action {
+  text-decoration: none;
+}
+.todo-summary {
+  margin-left: 5vh;
+  margin-top: -1.5ex;
+  font-weight: bold;
+}
+.todo-completed-summary {
+  composes: todo-summary;
+  font-weight: normal;
+  font-style: italic;
 }

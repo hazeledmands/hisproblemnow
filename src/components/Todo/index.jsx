@@ -9,9 +9,15 @@ import styles from './styles.css';
 const Todo = ({ onClick, completed, target, callToAction }) => (
   <li onClick={onClick}
       styleName={completed ? 'todo-completed' : 'todo'}>
-      Call <PhoneNumber value={target} />:
+    <PhoneNumber value={target} actionId={callToAction.uid} />
+    <div styleName={completed ? 'todo-completed-summary' : 'todo-summary'}>
       {callToAction.data['call-to-action.title'].value[0].text}
-      <CallToAction {...callToAction.data} uid={callToAction.uid} key={callToAction.uid} />
+    </div>
+    <div styleName={completed ? 'todo-completed-call-to-action' : 'todo-call-to-action'}>
+      <CallToAction {...callToAction.data}
+                    uid={callToAction.uid}
+                    key={callToAction.uid} />
+    </div>
   </li>
 )
 
