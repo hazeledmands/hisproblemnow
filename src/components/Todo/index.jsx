@@ -13,11 +13,12 @@ const Todo = ({ onClick, completed, target, callToAction }) => (
     <div styleName={completed ? 'todo-completed-summary' : 'todo-summary'}>
       {callToAction.data['call-to-action.title'].value[0].text}
     </div>
-    <div styleName={completed ? 'todo-completed-call-to-action' : 'todo-call-to-action'}>
+    {!completed &&
       <CallToAction {...callToAction.data}
                     uid={callToAction.uid}
-                    key={callToAction.uid} />
-    </div>
+                    key={callToAction.uid}
+                    inTodo={true} />
+    }
   </li>
 )
 

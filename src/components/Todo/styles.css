@@ -7,15 +7,6 @@
   composes: todo;
   text-decoration: line-through;
 }
-.todo-completed:before {
-}
-.todo h1,
-.todo time {
-  display: none;
-}
-.todo-completed-call-to-action {
-  display: none;
-}
 .todo-call-to-action {
   text-decoration: none;
 }
