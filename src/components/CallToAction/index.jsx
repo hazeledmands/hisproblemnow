@@ -20,12 +20,13 @@ const CallToAction = props => (
     </div>
 
     <div styleName="phone-numbers">
-      {props['call-to-action.phone-numbers'] && <PhoneNumbers {...props['call-to-action.phone-numbers']} />}
+      {props['call-to-action.phone-numbers'] && <PhoneNumbers value={props['call-to-action.phone-numbers'].value} actionId={props.uid} />}
     </div>
   </div>
 );
 
 CallToAction.propTypes = {
+  uid: PropTypes.string.isRequired,
   'call-to-action.title': PropTypes.object.isRequired,
   'call-to-action.notes': PropTypes.object,
   'call-to-action.script': PropTypes.object,
