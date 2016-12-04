@@ -65,19 +65,30 @@ function todos(
     phoneNumbers?: Array<{}>,
     phoneNumber?: {},
   }) {
+  const actionPhoneNumber = action.phoneNumber;
+  const actionPhoneNumbers = action.phoneNumbers;
   switch (action.type) {
     case ADD_OR_TOGGLE_TODO:
-      return toggleTodo(addTodo(state, action.actionId, action.phoneNumber),
-                        action.actionId, action.phoneNumber);
+      if (actionPhoneNumber == null) {
+        throw new Error("Can't add / toggle a todo without a phone number");
+      }
+      return toggleTodo(addTodo(state, action.actionId, actionPhoneNumber),
+                        action.actionId, actionPhoneNumber);
     case ADD_TODO:
-      return _.reduce((action.phoneNumbers || []),
+      if (actionPhoneNumbers === null) {
+        throw new Error("Can't add / toggle a todo without a phone number");
+      }
+      return _.reduce((actionPhoneNumbers || []),
                       (newState, phoneNumber) => (
                         addTodo(newState,
                                 action.actionId,
                                 phoneNumber)
                       ), state);
     case TOGGLE_TODO:
-      return toggleTodo(state, action.actionId, action.phoneNumber);
+      if (actionPhoneNumber == null) {
+        throw new Error("Can't add / toggle a todo without a phone number");
+      }
+      return toggleTodo(state, action.actionId, actionPhoneNumber);
     default:
       return state;
   }
