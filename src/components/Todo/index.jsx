@@ -6,9 +6,8 @@ import PhoneNumber from '../PhoneNumber';
 
 import styles from './styles.css';
 
-const Todo = ({ onClick, completed, target, callToAction }) => (
-  <li onClick={onClick}
-      styleName={completed ? 'todo-completed' : 'todo'}>
+const Todo = ({ completed, target, callToAction }) => (
+  <li styleName={completed ? 'todo-completed' : 'todo'}>
     <PhoneNumber value={target} actionId={callToAction.uid} />
     <div styleName={completed ? 'todo-completed-summary' : 'todo-summary'}>
       {callToAction.data['call-to-action.title'].value[0].text}
@@ -24,7 +23,6 @@ const Todo = ({ onClick, completed, target, callToAction }) => (
 
 
 Todo.propTypes = {
-  onClick: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
   callToAction: PropTypes.object.isRequired,
   target: PropTypes.object.isRequired,

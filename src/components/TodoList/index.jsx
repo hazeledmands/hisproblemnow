@@ -7,7 +7,6 @@ const TodoList = ({ todos, onTodoClick }) => (
       <Todo
          key={todo.uid}
          {...todo}
-         onClick={() => onTodoClick(todo.uid)}
          />
     )}
   </ul>
@@ -20,7 +19,6 @@ TodoList.propTypes = {
     callToAction: PropTypes.object.isRequired,
     target: PropTypes.object.isRequired,
   }).isRequired).isRequired,
-  onTodoClick: PropTypes.func.isRequired
 }
 
 export default TodoList

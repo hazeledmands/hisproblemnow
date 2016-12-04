@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import _ from 'lodash';
 import uuid from 'uuid';
 
-import { ADD_TODO, TOGGLE_TODO, ADD_OR_TOGGLE_TODO } from './actions';
+import { ADD_TODO, ADD_OR_TOGGLE_TODO } from './actions';
 
 function callsToAction(state: Array<{}> = []) {
   return state;
@@ -84,11 +84,6 @@ function todos(
                                 action.actionId,
                                 phoneNumber)
                       ), state);
-    case TOGGLE_TODO:
-      if (actionPhoneNumber == null) {
-        throw new Error("Can't add / toggle a todo without a phone number");
-      }
-      return toggleTodo(state, action.actionId, actionPhoneNumber);
     default:
       return state;
   }

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { toggleTodo } from '../actions';
 import TodoListComponent from '../components/TodoList';
 
 const mapStateToProps = state => (
@@ -14,12 +13,8 @@ const mapStateToProps = state => (
   }
 );
 
-const mapDispatchToProps = dispatch => (
-  {
-    onTodoClick: (uid) => {
-      dispatch(toggleTodo(uid));
-    },
-  }
+const mapDispatchToProps = () => (
+  {}
 );
 
 const TodoList = connect(mapStateToProps, mapDispatchToProps)(TodoListComponent);
