@@ -11,12 +11,14 @@ import CallToAction from '../CallToAction';
 import StructuredText from '../StructuredText';
 import styles from './styles.css';
 
-const App = ({ callsToAction, startHere }) => (
+const App = ({ callsToAction, startHere, todos }) => (
   <div>
     <h1 id="title" styleName="title">{startHere.data['start-here.page-title'].value}</h1>
     <h2 styleName="subtitle">{startHere.data['start-here.subtitle'].value}</h2>
 
     <Fragment forRoute="/">
+      {todos && todos.length ? <Link styleName="link-button" href="/todo">To Dos</Link> : ''}
+
       <div id="intro" styleName="intro">
         <Link styleName="link-button" href="/start-here">{startHere.data['start-here.button-text'].value}</Link>
       </div>
