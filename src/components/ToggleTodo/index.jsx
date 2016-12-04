@@ -1,14 +1,20 @@
+// @flow
 import React, { PropTypes } from 'react'
 import CSSModules from 'react-css-modules';
 
 import styles from './styles.css';
+
+function shouldCheckToggle(todo: ?{completed: boolean}): boolean {
+  if (todo == null) return false;
+  return todo.completed;
+}
 
 const ToggleTodo = ({onClick, actionId, phoneNumber, todo}) => {
   return (
     <input type="checkbox"
            styleName='toggle-todo'
            onChange={function() {onClick(actionId, phoneNumber)}}
-           checked={todo && todo.completed} />
+           checked={shouldCheckToggle(todo)} />
   )
 }
 
