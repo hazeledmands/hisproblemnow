@@ -19,6 +19,34 @@ const App = ({ callsToAction, startHere }) => (
     <Fragment forRoute="/">
       <div id="intro" styleName="intro">
         <Link styleName="link-button" href="/start-here">{startHere.data['start-here.button-text'].value}</Link>
+        <form
+          action="//herokuapp.us14.list-manage.com/subscribe/post?u=8caf5cbe5346a3b5699e90085&amp;id=fc768672ff"
+          method="post"
+          target="_blank"
+        >
+          <label htmlFor="mailchimp-signup">
+            Get reminders by email:
+          </label>
+          <input
+            type="email"
+            value=""
+            name="EMAIL"
+            id="mailchimp-signup"
+            placeholder="email address"
+            required
+          />
+          <input
+            type="text"
+            name="b_8caf5cbe5346a3b5699e90085_fc768672ff"
+            tabIndex="-1"
+            value=""
+          />
+          <input
+            type="submit"
+            value="Subscribe"
+            name="subscribe"
+          />
+        </form>
       </div>
 
       <div id="calls-to-action">
